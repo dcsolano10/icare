@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">icare</string>
+    <string name="l_icare">iCare</string>
+    <string name="b_sesion">Iniciar sesión</string>
+    <string name="b_crear">Crear cuenta</string>
+    <string name="l_email">Correo electrónico</string>
+    <string name="l_contrasena">Contraseña</string>
+    <string name="messageWithLink"><u>¿No tienes una cuenta? Puedes crear una aquí</u></string>
+    <string name="messageWithLinkCrear"><u>¿Ya tienes una cuenta? Puedes iniciar sesión aquí</u></string>
+</resources>

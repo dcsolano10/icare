@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1083045823551",
+    "firebase_url": "https://icare-beda8.firebaseio.com",
+    "project_id": "icare-beda8",
+    "storage_bucket": "icare-beda8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083045823551:android:d6cbaadcd7cd037f",
+        "android_client_info": {
+          "package_name": "com.ingenian.icare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1083045823551-n8rdsor508ijvnultjkgffdpfv1pmt9q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ingenian.icare",
+            "certificate_hash": "d747bb437443d9e684d307b30f9c5b47ddf615a7"
+          }
+        },
+        {
+          "client_id": "1083045823551-3dbmkl1fted31liumhhomdoc7ap63drf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB64bXBtHPPq3XgJb5KtDewfdSeE1JY2Jo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1083045823551-3dbmkl1fted31liumhhomdoc7ap63drf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

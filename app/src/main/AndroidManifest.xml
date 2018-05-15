@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ingenian.icare">
 
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,9 +22,14 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="barcode" />
+        <!-- To use multiple models: android:value="barcode,model2,model3" -->
 
         <activity android:name=".LoginActivity" />
-        <activity android:name=".CrearCuentaActivity"></activity>
+        <activity android:name=".CrearCuentaActivity" />
+        <activity android:name=".QRLectorActivity"></activity>
     </application>
 
 </manifest>

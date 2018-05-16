@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ingenian.icare">
 
-    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -29,7 +31,8 @@
 
         <activity android:name=".LoginActivity" />
         <activity android:name=".CrearCuentaActivity" />
-        <activity android:name=".QRLectorActivity"></activity>
+        <activity android:name=".QRLectorActivity" />
+        <activity android:name=".PerfilActivity"></activity>
     </application>
 
 </manifest>

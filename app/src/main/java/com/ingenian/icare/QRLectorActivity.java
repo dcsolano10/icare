@@ -6,19 +6,30 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
-import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode;
-import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetectorOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 
 public class QRLectorActivity extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
-
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mDatabaseReferencePacientes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrlector);
+
+        mFirebaseDatabase= FirebaseDatabase.getInstance();
+        mDatabaseReferencePacientes=mFirebaseDatabase.getReference().child("Pacientes");
+
+
         leerQR();
     }
 
@@ -37,6 +48,7 @@ public class QRLectorActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 String contents = data.getStringExtra("SCAN_RESULT");
                 System.out.println("SE ESCANEÓ SÚPER HIPER DUPER BIEN: " + contents);
+                buscarPaciente(contents);
             }
             if(resultCode == RESULT_CANCELED){
                 //handle cancel
@@ -61,4 +73,31 @@ public class QRLectorActivity extends AppCompatActivity {
 
         }
     }
+
+    private void buscarPaciente(String contents){
+        final String identificador=contents;
+
+        ValueEventListener listenerConexiones = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChild(identificador)){
+                    System.out.println("Existe");
+                }else{
+                    System.out.println("NOOOOOOOOO Existe");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        mDatabaseReferencePacientes.addValueEventListener(listenerConexiones);
+    }
+
+    public void perfilPaciente(String identificador) {
+        Intent intent = new Intent(this, PerfilActivity.class);
+        startActivity(intent);
+    }
 }
+

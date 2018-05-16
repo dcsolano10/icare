@@ -1,11 +1,13 @@
 package com.ingenian.icare;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -13,19 +15,29 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
+
 public class PerfilActivity extends AppCompatActivity {
 
     private String identificador;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReferencePacientes;
     private TextView txtNombre;
+    private TextView txtEPS;
+    private TextView txtEdad;
+    private Context context;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+        context=this;
 
         txtNombre = findViewById(R.id.textViewNombre);
+        txtEPS = findViewById(R.id.textViewEPS);
+        txtEdad = findViewById(R.id.textViewEdad);
 
         obtenerIdentificador();
         mFirebaseDatabase= FirebaseDatabase.getInstance();
@@ -48,7 +60,19 @@ public class PerfilActivity extends AppCompatActivity {
                 if(dataSnapshot.hasChild(identificador)){
                     System.out.println("Existe");
                     DataSnapshot dataPaciente=dataSnapshot.child(identificador);
-                    txtNombre.setText(dataPaciente.child("Nombre").getValue().toString());
+                    try {
+                        int anoNacimiento = Integer.parseInt(dataPaciente.child("Nacimiento").getValue().toString());
+                        int edad = Calendar.getInstance().get(Calendar.YEAR) - anoNacimiento;
+                        txtEdad.setText(edad + "");
+                    }catch (Exception e){
+                        Toast toast = Toast.makeText(context, "Hubo un error obteniendo la edad del usuario.", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+
+                        txtNombre.setText(dataPaciente.child("Nombre").getValue().toString());
+                    txtEPS.setText(dataPaciente.child("EPS").getValue().toString());
+
+
                 }else{
                     dialogoError();
                 }

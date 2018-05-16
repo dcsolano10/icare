@@ -10,7 +10,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +31,12 @@ public class QRLectorActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseReferencePacientes;
     private EditText txtID;
     private Context context;
+    private ProgressBar spinner;
+    private TextView txtInfo;
+    private Button bBuscar;
+    private Button bIntentar;
+
+
 
 
     @Override
@@ -36,13 +45,25 @@ public class QRLectorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_qrlector);
 
         txtID= findViewById(R.id.editText);
+        txtInfo=findViewById(R.id.textView7);
+        bBuscar= findViewById(R.id.button6);
+        bIntentar= findViewById(R.id.button5);
+
         context = this;
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
+        spinner.setVisibility(View.VISIBLE);
 
         mFirebaseDatabase= FirebaseDatabase.getInstance();
         mDatabaseReferencePacientes=mFirebaseDatabase.getReference().child("Pacientes");
 
-
+        mostrarVista();
         leerQR();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mostrarVista();
     }
 
     private void dispatchTakePictureIntent() {
@@ -60,11 +81,13 @@ public class QRLectorActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 String contents = data.getStringExtra("SCAN_RESULT");
                 System.out.println("SE ESCANEÓ SÚPER HIPER DUPER BIEN: " + contents);
+                ocultarVista();
                 buscarPaciente(contents);
             }
             if(resultCode == RESULT_CANCELED){
                 //handle cancel
                 System.out.println("NO LO SÉ Y NUNCA LO SABRÉ");
+                mostrarVista();
             }
         }
     }
@@ -82,7 +105,6 @@ public class QRLectorActivity extends AppCompatActivity {
             Uri marketUri = Uri.parse("market://details?id=com.google.zxing.client.android");
             Intent marketIntent = new Intent(Intent.ACTION_VIEW,marketUri);
             startActivity(marketIntent);
-
         }
     }
 
@@ -113,6 +135,7 @@ public class QRLectorActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PerfilActivity.class);
         intent.putExtra(IDENTIFICADOR,identificador);
         startActivity(intent);
+        mostrarVista();
     }
 
     public void escanearNuevamente(View view){
@@ -142,6 +165,22 @@ public class QRLectorActivity extends AppCompatActivity {
         // Create the AlertDialog
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    private void mostrarVista(){
+        txtID.setVisibility(View.VISIBLE);
+        txtInfo.setVisibility(View.VISIBLE);
+        bBuscar.setVisibility(View.VISIBLE);
+        bIntentar.setVisibility(View.VISIBLE);
+        spinner.setVisibility(View.GONE);
+    }
+
+    private void ocultarVista(){
+        txtID.setVisibility(View.GONE);
+        txtInfo.setVisibility(View.GONE);
+        bBuscar.setVisibility(View.GONE);
+        bIntentar.setVisibility(View.GONE);
+        spinner.setVisibility(View.VISIBLE);
     }
 }
 

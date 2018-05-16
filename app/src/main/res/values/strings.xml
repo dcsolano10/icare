@@ -12,4 +12,6 @@
     <string name="l_escanear_error">No se ha podido escanear el código QR correctamente. Puedes ingresar el identificador del usuario o intentar escanear nuevamente.</string>
     <string name="b_buscar_id">Buscar por identificador</string>
     <string name="b_escanear_n">Escanear nuevamente</string>
+    <string name="l_edad">Edad:</string>
+    <string name="l_eps">EPS:</string>
 </resources>

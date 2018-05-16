@@ -46,7 +46,7 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="291dp"
+        android:layout_width="323dp"
         android:layout_height="45dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -70,7 +70,7 @@
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="291dp"
+        android:layout_width="323dp"
         android:layout_height="45dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -89,6 +89,6 @@
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.814"
+        app:layout_constraintVertical_bias="0.794"
         tools:text="@string/b_sesion" />
 </android.support.constraint.ConstraintLayout>

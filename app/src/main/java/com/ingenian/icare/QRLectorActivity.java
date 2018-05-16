@@ -18,8 +18,10 @@ import com.google.firebase.database.ValueEventListener;
 public class QRLectorActivity extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
+    public static final String IDENTIFICADOR ="Identificador_paciente";
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReferencePacientes;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +83,7 @@ public class QRLectorActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChild(identificador)){
+                    perfilPaciente(identificador);
                     System.out.println("Existe");
                 }else{
                     System.out.println("NOOOOOOOOO Existe");
@@ -97,6 +100,7 @@ public class QRLectorActivity extends AppCompatActivity {
 
     public void perfilPaciente(String identificador) {
         Intent intent = new Intent(this, PerfilActivity.class);
+        intent.putExtra(IDENTIFICADOR,identificador);
         startActivity(intent);
     }
 }

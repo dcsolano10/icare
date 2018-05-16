@@ -1,12 +1,17 @@
 package com.ingenian.icare;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,12 +26,17 @@ public class QRLectorActivity extends AppCompatActivity {
     public static final String IDENTIFICADOR ="Identificador_paciente";
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReferencePacientes;
+    private EditText txtID;
+    private Context context;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrlector);
+
+        txtID= findViewById(R.id.editText);
+        context = this;
 
         mFirebaseDatabase= FirebaseDatabase.getInstance();
         mDatabaseReferencePacientes=mFirebaseDatabase.getReference().child("Pacientes");
@@ -87,6 +97,7 @@ public class QRLectorActivity extends AppCompatActivity {
                     System.out.println("Existe");
                 }else{
                     System.out.println("NOOOOOOOOO Existe");
+                    dialogoError();
                 }
             }
 
@@ -102,6 +113,35 @@ public class QRLectorActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PerfilActivity.class);
         intent.putExtra(IDENTIFICADOR,identificador);
         startActivity(intent);
+    }
+
+    public void escanearNuevamente(View view){
+        leerQR();
+    }
+
+    public void buscarID(View view){
+        String id = txtID.getText().toString().trim();
+        if(id.isEmpty()){
+            Toast toast = Toast.makeText(this, "Debes escribir un identificador.", Toast.LENGTH_SHORT);
+            toast.show();
+        }else{
+            buscarPaciente(id);
+        }
+
+    }
+
+    private void dialogoError(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage("No se encontró al paciente. Intenta nuevamente.");
+        // Add the buttons
+        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+            }
+        });
+        // Create the AlertDialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
 

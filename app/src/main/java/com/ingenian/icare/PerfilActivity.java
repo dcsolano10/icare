@@ -86,5 +86,6 @@ public class PerfilActivity extends AppCompatActivity {
 
         // Create the AlertDialog
         AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

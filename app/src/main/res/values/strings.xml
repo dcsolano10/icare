@@ -8,4 +8,8 @@
     <string name="messageWithLink"><u>¿No tienes una cuenta? Puedes crear una aquí</u></string>
     <string name="messageWithLinkCrear"><u>¿Ya tienes una cuenta? Puedes iniciar sesión aquí</u></string>
     <string name="b_escanear">Escanear QR</string>
+    <string name="l_buscar_paciente">Buscar usuario</string>
+    <string name="l_escanear_error">No se ha podido escanear el código QR correctamente. Puedes ingresar el identificador del usuario o intentar escanear nuevamente.</string>
+    <string name="b_buscar_id">Buscar por identificador</string>
+    <string name="b_escanear_n">Escanear nuevamente</string>
 </resources>

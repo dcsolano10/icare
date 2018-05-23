@@ -14,4 +14,7 @@
     <string name="b_escanear_n">Escanear nuevamente</string>
     <string name="l_edad">Edad:</string>
     <string name="l_eps">EPS:</string>
+    <string name="b_fichas"> Ver fichas médicas</string>
+    <string name="b_medicamentos">Ver medicamentos</string>
+    <string name="b_inginfo">Ingresar información nueva</string>
 </resources>

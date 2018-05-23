@@ -36,6 +36,8 @@ public class QRLectorActivity extends AppCompatActivity {
     private Button bBuscar;
     private Button bIntentar;
 
+    private boolean mostrar;
+
 
 
 
@@ -56,14 +58,26 @@ public class QRLectorActivity extends AppCompatActivity {
         mFirebaseDatabase= FirebaseDatabase.getInstance();
         mDatabaseReferencePacientes=mFirebaseDatabase.getReference().child("Pacientes");
 
-        mostrarVista();
+        mostrar=true;
+        ocultarVista();
         leerQR();
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
+        if(mostrar)
         mostrarVista();
+        else
+            ocultarVista();
+        System.out.println("ON RESUMEEEEEE");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ocultarVista();
+        System.out.println("ON PAUSEEEEEE");
     }
 
     private void dispatchTakePictureIntent() {
@@ -77,17 +91,18 @@ public class QRLectorActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0) {
-
+            mostrar=false;
             if (resultCode == RESULT_OK) {
+                mostrar=false;
+                ocultarVista();
                 String contents = data.getStringExtra("SCAN_RESULT");
                 System.out.println("SE ESCANEÓ SÚPER HIPER DUPER BIEN: " + contents);
-                ocultarVista();
                 buscarPaciente(contents);
             }
             if(resultCode == RESULT_CANCELED){
                 //handle cancel
                 System.out.println("NO LO SÉ Y NUNCA LO SABRÉ");
-                mostrarVista();
+                mostrar=true;
             }
         }
     }
@@ -97,14 +112,15 @@ public class QRLectorActivity extends AppCompatActivity {
 
             Intent intent = new Intent("com.google.zxing.client.android.SCAN");
             intent.putExtra("SCAN_MODE", "QR_CODE_MODE"); // "PRODUCT_MODE for bar codes
-
             startActivityForResult(intent, 0);
+            mostrar=false;
 
         } catch (Exception e) {
 
             Uri marketUri = Uri.parse("market://details?id=com.google.zxing.client.android");
             Intent marketIntent = new Intent(Intent.ACTION_VIEW,marketUri);
             startActivity(marketIntent);
+            mostrar=true;
         }
     }
 
@@ -125,7 +141,7 @@ public class QRLectorActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                mostrar=false;
             }
         };
         mDatabaseReferencePacientes.addValueEventListener(listenerConexiones);
@@ -135,7 +151,7 @@ public class QRLectorActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PerfilActivity.class);
         intent.putExtra(IDENTIFICADOR,identificador);
         startActivity(intent);
-        mostrarVista();
+        mostrar=true;
     }
 
     public void escanearNuevamente(View view){

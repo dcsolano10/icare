@@ -2,9 +2,11 @@ package com.ingenian.icare;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -111,5 +113,10 @@ public class PerfilActivity extends AppCompatActivity {
         // Create the AlertDialog
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    public void agregarInfo(View view){
+        Intent intent = new Intent(this, AgregarInformacionActivity.class);
+        startActivity(intent);
     }
 }

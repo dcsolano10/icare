@@ -25,7 +25,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class QRLectorActivity extends AppCompatActivity {
 
-    private static final int REQUEST_IMAGE_CAPTURE = 1;
     public static final String IDENTIFICADOR ="Identificador_paciente";
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReferencePacientes;
@@ -80,12 +79,6 @@ public class QRLectorActivity extends AppCompatActivity {
         System.out.println("ON PAUSEEEEEE");
     }
 
-    private void dispatchTakePictureIntent() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-        }
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ingenian.icare">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -13,7 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" android:screenOrientation="portrait">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,10 +36,21 @@
             android:value="barcode" />
         <!-- To use multiple models: android:value="barcode,model2,model3" -->
 
-        <activity android:name=".LoginActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".CrearCuentaActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".QRLectorActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".PerfilActivity" android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CrearCuentaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".QRLectorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PerfilActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".AgregarInformacionActivity" />
+        <activity android:name=".MostrarFichasActivity" />
+        <activity android:name=".MostrarMedicamentosActivity"></activity>
     </application>
 
 </manifest>

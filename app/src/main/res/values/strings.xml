@@ -17,4 +17,17 @@
     <string name="b_fichas"> Ver fichas médicas</string>
     <string name="b_medicamentos">Ver medicamentos</string>
     <string name="b_inginfo">Ingresar información nueva</string>
+    <string name="l_agregarinfo">Agregar información</string>
+    <string name="l_cualinfo">¿Cuál información deseas agregar?</string>
+    <string name="l_agregari">Agregar información</string>
+    <string name="l_comoagregar">¿Cómo deseas agregar la información?</string>
+    <string-array name="como">
+        <item>Tomar foto</item>
+        <item>Ingresar manualmente</item>
+    </string-array>
+    <string-array name="informacion">
+        <item>Ficha médica</item>
+        <item>Medicamentos</item>
+        <item>Cuidados especiales</item>
+    </string-array>
 </resources>

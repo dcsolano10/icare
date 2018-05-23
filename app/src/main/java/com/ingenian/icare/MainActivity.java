@@ -44,4 +44,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, QRLectorActivity.class);
         startActivity(intent);
     }
+
+    public void alerta(View view) {
+        Intent intent = new Intent(this, AlertaActivity.class);
+        startActivity(intent);
+    }
 }

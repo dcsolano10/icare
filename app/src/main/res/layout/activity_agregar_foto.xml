@@ -6,6 +6,48 @@
     android:layout_height="match_parent"
     tools:context="com.ingenian.icare.AgregarFotoActivity">
 
+    <Button
+        android:id="@+id/buttonVolver"
+        android:layout_width="131dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimaryDark"
+        android:fontFamily="@font/cabin_medium"
+        android:onClick="volver"
+        android:text="@string/b_volver"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.984" />
+
+    <Button
+        android:id="@+id/buttonNuevaFoto2"
+        android:layout_width="131dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimaryDark"
+        android:fontFamily="@font/cabin_medium"
+        android:onClick="retomar"
+        android:text="@string/bfoto"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.868"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.989" />
+
     <TextView
         android:id="@+id/textView12"
         android:layout_width="382dp"
@@ -27,8 +69,8 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="310dp"
-        android:layout_height="366dp"
+        android:layout_width="304dp"
+        android:layout_height="313dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -37,6 +79,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.821"
+        app:layout_constraintVertical_bias="0.617"
         app:srcCompat="@color/colorWhite" />
 </android.support.constraint.ConstraintLayout>

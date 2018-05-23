@@ -122,4 +122,10 @@ public class PerfilActivity extends AppCompatActivity {
         intent.putExtra(ID_PACIENTE,identificador);
         startActivity(intent);
     }
+
+    public void mostrarFichas(View view){
+        Intent intent = new Intent(this, MostrarFichasActivity.class);
+        intent.putExtra(ID_PACIENTE,identificador);
+        startActivity(intent);
+    }
 }

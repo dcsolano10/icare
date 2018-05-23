@@ -23,6 +23,10 @@
     <string name="l_comoagregar">¿Cómo deseas agregar la información?</string>
     <string name="b_guardar">Guardar foto</string>
     <string name="l_gfoto">Agregar foto</string>
+    <string name="bfoto">Tomar una nueva foto</string>
+    <string name="b_volver">Volver</string>
+    <string name="l_verfichas">Ver fichas médicas</string>
+    <string name="b_vermas">Ver más fichas</string>
     <string-array name="como">
         <item>Tomar foto</item>
         <item>Ingresar manualmente</item>
@@ -30,6 +34,6 @@
     <string-array name="informacion">
         <item>Ficha médica</item>
         <item>Medicamentos</item>
-        <item>Cuidados especiales</item>
+        <item>Formato cuidadores</item>
     </string-array>
 </resources>

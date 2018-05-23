@@ -179,6 +179,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/cabin_medium"
+        android:onClick="mostrarFichas"
         android:text="@string/b_fichas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

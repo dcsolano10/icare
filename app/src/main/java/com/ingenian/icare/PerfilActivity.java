@@ -29,6 +29,8 @@ public class PerfilActivity extends AppCompatActivity {
     private TextView txtEdad;
     private Context context;
 
+    public final static String ID_PACIENTE="id_paciente";
+
 
 
     @Override
@@ -117,6 +119,7 @@ public class PerfilActivity extends AppCompatActivity {
 
     public void agregarInfo(View view){
         Intent intent = new Intent(this, AgregarInformacionActivity.class);
+        intent.putExtra(ID_PACIENTE,identificador);
         startActivity(intent);
     }
 }

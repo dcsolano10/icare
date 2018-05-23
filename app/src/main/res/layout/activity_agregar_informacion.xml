@@ -98,6 +98,7 @@
         android:layout_marginTop="8dp"
         android:background="@color/colorPrimaryDark"
         android:fontFamily="@font/cabin_medium"
+        android:onClick="agregar"
         android:text="@string/l_agregari"
         android:textColor="@color/colorWhite"
         android:textSize="18sp"

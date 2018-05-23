@@ -6,6 +6,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -19,10 +20,11 @@ import java.io.File;
 
 public class AgregarInformacionActivity extends AppCompatActivity {
 
-    private static final int REQUEST_IMAGE_CAPTURE = 1;
-    private StorageReference mStorageRef;
     private Spinner spinnerInformacion;
     private Spinner spinnerComo;
+    public final static String TIPO_INFO="tipo_informacion";
+    private String identificador;
+
 
 
 
@@ -30,8 +32,8 @@ public class AgregarInformacionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_informacion);
+        identificador=getIntent().getStringExtra(PerfilActivity.ID_PACIENTE);
 
-        mStorageRef = FirebaseStorage.getInstance().getReference();
         spinnerInformacion = (Spinner) findViewById(R.id.spinnerInfo);
         spinnerComo = (Spinner) findViewById(R.id.spinnerComo);
         llenarSpinner();
@@ -50,32 +52,19 @@ public class AgregarInformacionActivity extends AppCompatActivity {
         spinnerComo.setAdapter(adapter2);
     }
 
-    private void dispatchTakePictureIntent() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+
+
+
+    public void agregar(View view){
+        String informacion = spinnerInformacion.getSelectedItem().toString();
+        String como = spinnerComo.getSelectedItem().toString();
+
+        if(como.equals("Tomar foto")){
+            Intent intent = new Intent(this, AgregarFotoActivity.class);
+            intent.putExtra(TIPO_INFO,informacion);
+            intent.putExtra(PerfilActivity.ID_PACIENTE,identificador);
+            startActivity(intent);
         }
-    }
 
-    private void putFile(){
-
-        Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
-        StorageReference riversRef = mStorageRef.child("images/rivers.jpg");
-
-        riversRef.putFile(file)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // Get a URL to the uploaded content
-                        Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        // Handle unsuccessful uploads
-                        // ...
-                    }
-                });
     }
 }

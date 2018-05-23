@@ -21,6 +21,8 @@
     <string name="l_cualinfo">¿Cuál información deseas agregar?</string>
     <string name="l_agregari">Agregar información</string>
     <string name="l_comoagregar">¿Cómo deseas agregar la información?</string>
+    <string name="b_guardar">Guardar foto</string>
+    <string name="l_gfoto">Agregar foto</string>
     <string-array name="como">
         <item>Tomar foto</item>
         <item>Ingresar manualmente</item>
